@@ -1,7 +1,10 @@
-﻿namespace FilmSystem.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FilmSystem.Model
 {
     public class PersonChoice
     {
+        [Key]
         public int Id { get; set; }
         public string? MovieLink { get; set; }
         public int Rating { get; set; }

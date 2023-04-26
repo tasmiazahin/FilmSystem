@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FilmSystem.Data;
+using FilmSystem.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +11,19 @@ namespace FilmSystem.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
+        private readonly DataContext _context;
+
+        public PersonController(DataContext context) 
+        {
+            
+            _context =  context;
+        }
         // GET: api/<PersonController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<Person>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var persons = await _context.Persons.ToListAsync();
+            return persons;
         }
 
         // GET api/<PersonController>/5
