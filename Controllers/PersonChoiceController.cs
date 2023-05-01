@@ -9,44 +9,44 @@ namespace FilmSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GenreController : ControllerBase
+    public class PersonChoiceController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public GenreController(DataContext context)
+        public PersonChoiceController(DataContext context)
         {
 
             _context = context;
         }
-        // GET: api/<GenreController>
+        // GET: api/<PersonChoiceController>
         [HttpGet]
-        public async Task<List<Genre>> Get()
+        public async Task<List<PersonChoice>> Get()
         {
-            var genre = await _context.Genres.ToListAsync();
-            return genre;
-           
+            var personChoice = await _context.PersonChoices.ToListAsync();
+            return personChoice;
+
         }
 
-        // GET api/<GenreController>/5
+        // GET api/<PersonChoiceController>/5
         [HttpGet("{id}")]
-        public async Task<Genre> Get(int id)
+        public string Get(int id)
         {
-            return new Genre();
+            return "value";
         }
 
-        // POST api/<GenreController>
+        // POST api/<PersonChoiceController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<GenreController>/5
+        // PUT api/<PersonChoiceController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<GenreController>/5
+        // DELETE api/PersonChoiceController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
